@@ -74,6 +74,22 @@
             display: none;
             flex-basis: 83%;
         }
+        @media (max-width: 900px) {
+        section {
+            flex-direction: column; /* Stack items vertically */
+            align-items: flex-start; /* Align items to start */
+        }
+
+        input[type="range"] {
+            order: 2; /* Place range input at the bottom */
+            margin-top: auto; /* Push it down */
+            width: 100%; /* Optional: Make it take full width */
+        }
+
+        #emoji, #feedback, h1, label, input[type="number"], #helperTextID, #warning-text {
+            order: initial; /* Keep their order default unless needed */
+        }
+    }
     </style>
 </head>
 <body>
