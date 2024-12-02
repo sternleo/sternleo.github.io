@@ -74,21 +74,33 @@
             display: none;
             flex-basis: 83%;
         }
+
         @media (max-width: 900px) {
-        section {
-            flex-direction: column; /* Stack items vertically */
-            align-items: flex-start; /* Align items to start */
-        }
 
-        input[type="range"] {
-            order: 2; /* Place range input at the bottom */
-            margin-top: auto; /* Push it down */
-            width: 100%; /* Optional: Make it take full width */
-        }
+            label {
+                order: 2;
+                display: inline-flex;
+                width: 20%;
+            }
 
-        #emoji, #feedback, h1, label, input[type="number"], #helperTextID, #warning-text {
-            order: initial; /* Keep their order default unless needed */
-        }
+            input[type="range"] {
+                order: 2;
+                display: inline-flex;
+                width: 5%;
+                margin: 0;
+            }
+
+            #helperTextID {
+                order: 3;
+            }
+
+            input[type="number"] {
+                order: 1;
+            }
+
+            #emoji, #feedback, h1, #warning-text {
+                order: initial;
+            }
     }
     </style>
 </head>
