@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pain Scale</title>
+    <title>Feedback component</title>
     <style>
 
         section {
@@ -117,8 +117,8 @@
 </head>
 <body>
     <section>
-        <h1 for="pain-slider">Choose your pain level:</h1>
-        <label aria-hidden="true">Lowest</label>
+        <h1 for="pain-slider">How was your experience?</h1>
+        <label aria-hidden="true">Horrible</label>
         <input 
             id="pain-slider" 
             type="range" 
@@ -128,7 +128,7 @@
             value="5"
             aria-hidden="true"
         >
-        <label aria-hidden="true">Highest</label>
+        <label aria-hidden="true">Amazing</label>
         <input 
             id="pain-number" 
             type="number"  
@@ -140,7 +140,7 @@
             aria-valuemax="10" 
         >
         <p id="warning-text">Please choose a number between 1 and 10</p>
-        <p id="helperTextID">State how troublesome it was to use this website: <br> 1 = Very easy <br> 10 = Very troublesome</p>
+        <p id="helperTextID">State how your experience was using this website: <br> 1 = Horrible <br> 10 = Amazing</p>
         <p id="emoji" aria-hidden="true">😐</p>
         <p id="feedback" aria-live="assertive">Chosen level: 5</p>
     </section>
@@ -204,4 +204,9 @@
     varningstext läses ej upp
     läser up 5 för många gånger första gången
     sidan tar väldigt lång tid att ladda in så den läses typ upp 2 ggr????
+    Flera språk
+    icke vinklade ord
+    byta håll så 1 är sämstt, 10 bäst
+    egna bilder istället för emojis
+    annat innehåll får ej hoppa när varningstext kommer
     -->
