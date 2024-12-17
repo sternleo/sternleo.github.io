@@ -127,7 +127,7 @@
     </head>
     <body>
         <section>
-            <h1 for="pain-slider">How was your experience?</h1>
+            <h1 id="header">How was your experience?</h1>
             <label aria-hidden="true">Horrible</label>
             <input 
                 id="pain-slider" 
@@ -161,6 +161,7 @@
             const feedback = document.getElementById('feedback');
             const emoji = document.getElementById('emoji');
             const warningText = document.getElementById('warning-text');
+            const header = document.getElementById('header');
 
             const emojiMap = {
                 10: "🤩",
@@ -175,11 +176,17 @@
                 1: "😣"
             };
 
+            const preventFocus = (element) => {
+                element.blur();
+                element.setAttribute('tabindex', '-1');
+                element.setAttribute('aria-hidden', 'true');
+            };
+
             const updateValue = (value) => {
                 emoji.textContent = emojiMap[value] || "😊";
-                slider.setAttribute('aria-valuenow', value);
-                feedback.textContent = 'Chosen level:' + value;
-            };
+                feedback.textContent = 'Chosen level: ' + value;
+                preventFocus(header);
+            }
 
             slider.addEventListener('input', (event) => {
                 const value = event.target.value;
@@ -187,26 +194,28 @@
                 updateValue(value);
                 warningText.style.display = 'none';
                 feedback.setAttribute('aria-hidden', 'false');
+                preventFocus(header);
+                slider.focus();
                 
 
             });
 
             numberInput.addEventListener('input', (event) => {
-                const value = event.target.value;
-                numberInput.setAttribute('aria-hidden', 'true');
-                if (value === "") {
+                const value = parseInt(event.target.value);
+
+                if (isNaN(value)) {
                     warningText.style.display = 'none';
                 } else if (value >= 1 && value <= 10) {
                     warningText.style.display = 'none';
                     slider.value = value;
                     updateValue(value);
                     feedback.setAttribute('aria-hidden', 'false');
-
                 } else {
                     warningText.style.display = 'block';
                     feedback.setAttribute('aria-hidden', 'true');
                 }
-                numberInput.setAttribute('aria-hidden', 'false');
+                preventFocus(header);
+                numberInput.focus();
             }
             );
 
@@ -216,15 +225,12 @@
 
 
 
-    <!--
-        TODO
+    
+        <!-- /* TODO
         slider ej tab indexerbar om screenreader
-        läser up h1 igen när man byter pain level med screen reader
-        varningstext läses ej upp
         läser up 5 för många gånger första gången
 
 
         sidan tar väldigt lång tid att ladda in så den läses typ upp 2 ggr???? (Bättre på edge, går ej att lösa)
         Flera språk (kasnke inte, borde vara en egen komponent?)
-        egna bilder istället för emojis(kräver lagring av bilder, kanske inte för egen komponent?)
-        -->
+        egna bilder istället för emojis(kräver lagring av bilder, kanske inte för egen komponent?) */ -->
